@@ -1,1 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Quiz - Our World App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<header>📝 Quiz: Our World</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="climate.html">Climate</a>
+  <a href="pollution.html">Pollution</a>
+  <a href="nature.html">Nature</a>
+  <a href="countries.html">Countries</a>
+  <a href="account.html">Account</a>
+</nav>
+
+<div class="section-box">
+<h2>Question 1: What gas causes global warming?</h2>
+<button onclick="checkAnswer(this,true)">CO₂</button>
+<button onclick="checkAnswer(this,false)">O₂</button>
+<button onclick="checkAnswer(this,false)">N₂</button>
+</div>
+
+<div class="section-box">
+<h2>Question 2: What is deforestation?</h2>
+<button onclick="checkAnswer(this,true)">Cutting down trees</button>
+<button onclick="checkAnswer(this,false)">Planting trees</button>
+<button onclick="checkAnswer(this,false)">Cleaning rivers</button>
+</div>
+
+<div id="scoreboard" class="section-box">
+Score: <span id="score">0</span>
+</div>
+
+<script>
+let score=0;
+function checkAnswer(btn,correct){
+  if(correct){ score+=1; btn.style.background="green"; }
+  else { btn.style.background="red"; }
+  document.getElementById("score").innerText=score;
+  setTimeout(()=>{btn.style.background="darkred"},800);
+}
+</script>
+
+</body>
+</html>
