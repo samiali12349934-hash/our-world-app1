@@ -5,6 +5,26 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="top-profile" id="topProfile" style="display:none;">
+  <img id="smallAvatar" onclick="goAccount()">
+  <span id="smallName"></span>
+</div>
+
+<script>
+function goAccount(){
+  window.location.href="account.html";
+}
+
+window.onload = function(){
+  if(localStorage.getItem("loggedIn")==="true"){
+    document.getElementById("topProfile").style.display="flex";
+    document.getElementById("smallAvatar").src =
+      localStorage.getItem("avatar");
+    document.getElementById("smallName").innerText =
+      localStorage.getItem("user");
+  }
+}
+</script>
 <h1>🌍 The Story of Our World</h1>
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg" width="400">
