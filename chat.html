@@ -1,1 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Chat - Our World App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<header>💬 Chat Box</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="climate.html">Climate</a>
+  <a href="pollution.html">Pollution</a>
+  <a href="nature.html">Nature</a>
+  <a href="countries.html">Countries</a>
+  <a href="quiz.html">Quiz</a>
+  <a href="account.html">Account</a>
+</nav>
+
+<div class="section-box">
+<textarea id="chatInput" placeholder="Type a message..." rows="3" style="width:100%"></textarea>
+<button onclick="sendMsg()">Send</button>
+<ul id="chatBox"></ul>
+</div>
+
+<script>
+function sendMsg(){
+  let msg=document.getElementById("chatInput").value;
+  if(msg){
+    let li=document.createElement("li");
+    li.innerText=msg;
+    document.getElementById("chatBox").appendChild(li);
+    document.getElementById("chatInput").value="";
+  }
+}
+</script>
+
+</body>
+</html>
