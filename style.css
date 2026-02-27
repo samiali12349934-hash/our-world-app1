@@ -1,1 +1,11 @@
-
+body{margin:0;font-family:Arial;transition:0.5s;color:white;}
+header{text-align:center;padding:20px;font-size:28px;animation:float 3s infinite ease-in-out;}
+@keyframes float{0%{transform:translateY(0px);}50%{transform:translateY(-10px);}100%{transform:translateY(0px);}}
+nav a{margin:10px;padding:10px 20px;background:rgba(0,0,0,0.5);border-radius:10px;text-decoration:none;color:white;transition:0.3s;}
+nav a:hover{background:green;transform:scale(1.1);}
+.section-box{background:rgba(0,0,0,0.4);margin:20px auto;padding:20px;width:80%;border-radius:15px;box-shadow:0 0 15px cyan;animation:appear 1s ease forwards;opacity:0;}
+@keyframes appear{to{opacity:1;}}
+img.float-img{width:60%;border-radius:15px;animation:floatImg 3s infinite ease-in-out;}
+@keyframes floatImg{0%{transform:translateY(0px);}50%{transform:translateY(-15px);}100%{transform:translateY(0px);}}
+button{padding:10px 15px;border:none;border-radius:10px;background:darkred;color:white;cursor:pointer;transition:0.3s;}
+button:hover{transform:scale(1.05);background:orange;}
