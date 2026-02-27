@@ -90,8 +90,11 @@ function register(){
     localStorage.setItem("email", email);
     localStorage.setItem("pass", pass);
     localStorage.setItem("avatar", reader.result);
+    localStorage.setItem("loggedIn", "true");
     alert("Account Created!");
+    showProfile();
   }
+
   if(avatarFile){
     reader.readAsDataURL(avatarFile);
   }
@@ -103,6 +106,7 @@ function login(){
 
   if(user === localStorage.getItem("user") &&
      pass === localStorage.getItem("pass")){
+       localStorage.setItem("loggedIn", "true");
        showProfile();
   } else {
     alert("Wrong login");
@@ -125,8 +129,14 @@ function showProfile(){
 }
 
 function logout(){
-  document.getElementById("profile").style.display="none";
-  document.getElementById("loginBox").style.display="block";
+  localStorage.setItem("loggedIn","false");
+  location.reload();
+}
+
+window.onload = function(){
+  if(localStorage.getItem("loggedIn") === "true"){
+    showProfile();
+  }
 }
 </script>
 
