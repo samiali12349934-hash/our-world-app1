@@ -1,51 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Account - Our World App</title>
+<title>Account Center</title>
 <link rel="stylesheet" href="style.css">
+<style>
+.account-box{
+  width:400px;
+  margin:50px auto;
+  background:white;
+  color:black;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+.account-box input{
+  width:90%;
+  padding:10px;
+  margin:10px 0;
+}
+
+.account-box button{
+  padding:10px 20px;
+  background:#0072ff;
+  color:white;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+#profile{
+  display:none;
+  text-align:center;
+}
+
+#profile img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+}
+</style>
 </head>
 <body>
 
-<header>👤 Account Center</header>
+<h1>👤 Account Center</h1>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="climate.html">Climate</a>
-  <a href="pollution.html">Pollution</a>
-  <a href="nature.html">Nature</a>
-  <a href="countries.html">Countries</a>
-  <a href="quiz.html">Quiz</a>
-</nav>
+<div class="account-box" id="registerBox">
+<h2>Sign Up</h2>
+<input type="text" id="username" placeholder="Username">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
+<input type="file" id="avatarInput">
+<br>
+<button onclick="register()">Create Account</button>
+</div>
 
-<div class="section-box">
-<h2>User Profile</h2>
-<p>Username: <span id="username">Guest</span></p>
-<p>Avatar: <img id="avatar" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="100"></p>
-<input type="text" id="newName" placeholder="Enter new username">
-<button onclick="changeName()">Save Name</button>
+<div class="account-box" id="loginBox">
+<h2>Login</h2>
+<input type="text" id="loginUser" placeholder="Username">
+<input type="password" id="loginPass" placeholder="Password">
+<br>
+<button onclick="login()">Login</button>
+</div>
+
+<div class="account-box" id="profile">
+<h2>Your Profile</h2>
+<img id="avatarPreview">
+<p id="profileName"></p>
+<p id="profileEmail"></p>
+<button onclick="logout()">Logout</button>
 </div>
 
 <script>
-function changeName(){
-  let name=document.getElementById("newName").value;
-  if(name){ document.getElementById("username").innerText=name; }
+function register(){
+  let user = document.getElementById("username").value;
+  let email = document.getElementById("email").value;
+  let pass = document.getElementById("password").value;
+  let avatarFile = document.getElementById("avatarInput").files[0];
+
+  if(!user || !email || !pass){
+    alert("Fill all fields");
+    return;
+  }
+
+  let reader = new FileReader();
+  reader.onload = function(){
+    localStorage.setItem("user", user);
+    localStorage.setItem("email", email);
+    localStorage.setItem("pass", pass);
+    localStorage.setItem("avatar", reader.result);
+    alert("Account Created!");
+  }
+  if(avatarFile){
+    reader.readAsDataURL(avatarFile);
+  }
+}
+
+function login(){
+  let user = document.getElementById("loginUser").value;
+  let pass = document.getElementById("loginPass").value;
+
+  if(user === localStorage.getItem("user") &&
+     pass === localStorage.getItem("pass")){
+       showProfile();
+  } else {
+    alert("Wrong login");
+  }
+}
+
+function showProfile(){
+  document.getElementById("registerBox").style.display="none";
+  document.getElementById("loginBox").style.display="none";
+  document.getElementById("profile").style.display="block";
+
+  document.getElementById("profileName").innerText =
+    "Username: " + localStorage.getItem("user");
+
+  document.getElementById("profileEmail").innerText =
+    "Email: " + localStorage.getItem("email");
+
+  document.getElementById("avatarPreview").src =
+    localStorage.getItem("avatar");
+}
+
+function logout(){
+  document.getElementById("profile").style.display="none";
+  document.getElementById("loginBox").style.display="block";
 }
 </script>
 
 </body>
 </html>
-<!-- Background Music Panel -->
-<div style="position:fixed;bottom:10px;right:10px;background:rgba(0,0,0,0.5);padding:10px;border-radius:10px;">
-  <audio id="bgMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-  </audio>
-  <button onclick="toggleMusic()">🎵 Play/Pause Music</button>
-</div>
-
-<!-- Theme Switcher -->
-<div style="position:fixed;bottom:10px;left:10px;background:rgba(0,0,0,0.5);padding:10px;border-radius:10px;">
-  <button onclick="toggleTheme()">🌙 Dark/Light Mode</button>
-  <input type="color" id="bgColorPicker" onchange="changeBgColor(this.value)" title="Change Background Color">
-</div>
-
-<script src="script.js"></script>
