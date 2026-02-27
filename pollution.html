@@ -37,3 +37,18 @@
 
 </body>
 </html>
+<!-- Background Music Panel -->
+<div style="position:fixed;bottom:10px;right:10px;background:rgba(0,0,0,0.5);padding:10px;border-radius:10px;">
+  <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+  <button onclick="toggleMusic()">🎵 Play/Pause Music</button>
+</div>
+
+<!-- Theme Switcher -->
+<div style="position:fixed;bottom:10px;left:10px;background:rgba(0,0,0,0.5);padding:10px;border-radius:10px;">
+  <button onclick="toggleTheme()">🌙 Dark/Light Mode</button>
+  <input type="color" id="bgColorPicker" onchange="changeBgColor(this.value)" title="Change Background Color">
+</div>
+
+<script src="script.js"></script>
