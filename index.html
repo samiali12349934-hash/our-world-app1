@@ -69,3 +69,14 @@ window.onload = function(){
 <script src="script.js"></script>
 <a href="world.html">World Story</a>
 <a href="wars.html">Wars</a>
+<script>
+window.addEventListener("load", function(){
+  if(localStorage.getItem("loggedIn") === "true"){
+    document.getElementById("topProfile").style.display="flex";
+    document.getElementById("topAvatar").src =
+      localStorage.getItem("avatar");
+    document.getElementById("topName").innerText =
+      localStorage.getItem("user");
+  }
+});
+</script>
