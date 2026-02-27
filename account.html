@@ -73,71 +73,93 @@
 </div>
 
 <script>
-function register(){
-  let user = document.getElementById("username").value;
-  let email = document.getElementById("email").value;
-  let pass = document.getElementById("password").value;
-  let avatarFile = document.getElementById("avatarInput").files[0];
+<h1>🌍 Major Environmental Problems</h1>
 
-  if(!user || !email || !pass){
-    alert("Fill all fields");
-    return;
-  }
+<p>
+The world faces many environmental problems that affect humans,
+animals, plants, and oceans. These problems are increasing every year.
+We must understand them and work together to solve them.
+</p>
 
-  let reader = new FileReader();
-  reader.onload = function(){
-    localStorage.setItem("user", user);
-    localStorage.setItem("email", email);
-    localStorage.setItem("pass", pass);
-    localStorage.setItem("avatar", reader.result);
-    localStorage.setItem("loggedIn", "true");
-    alert("Account Created!");
-    showProfile();
-  }
+<h2>🌡 Global Warming</h2>
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Global_Warming_Map.jpg" width="450">
+<p>
+Global warming is the increase in Earth's temperature.
+It is caused by harmful gases from cars and factories.
+These gases trap heat in the atmosphere.
+It causes melting ice in the Arctic.
+Sea levels rise and may flood cities.
+Weather becomes more extreme.
+Some places become very hot.
+Other places experience heavy storms.
+Climate patterns change worldwide.
+Reducing pollution helps stop global warming.
+</p>
 
-  if(avatarFile){
-    reader.readAsDataURL(avatarFile);
-  }
-}
+<h2>🏭 Pollution</h2>
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Factory_pollution.jpg" width="450">
+<p>
+Pollution harms air, water, and soil.
+Air pollution comes from smoke and gases.
+Water pollution comes from waste and chemicals.
+Soil pollution happens from trash and chemicals.
+Pollution causes diseases.
+It harms animals and plants.
+Plastic waste kills marine life.
+Factories produce harmful emissions.
+Reducing waste can help.
+Recycling is very important.
+</p>
 
-function login(){
-  let user = document.getElementById("loginUser").value;
-  let pass = document.getElementById("loginPass").value;
+<h2>🌲 Deforestation</h2>
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Deforestation_in_Borneo.jpg" width="450">
+<p>
+Deforestation means cutting down forests.
+Trees produce oxygen.
+Forests protect animals.
+Cutting trees increases global warming.
+Animals lose homes.
+Rainfall decreases.
+Soil becomes weak.
+Farming destroys forests.
+Planting trees helps.
+Forests must be protected.
+</p>
 
-  if(user === localStorage.getItem("user") &&
-     pass === localStorage.getItem("pass")){
-       localStorage.setItem("loggedIn", "true");
-       showProfile();
-  } else {
-    alert("Wrong login");
-  }
-}
+<h2>💧 Water Shortage</h2>
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Drought_in_Somalia.jpg" width="450">
+<p>
+Water shortage means not enough clean water.
+Drought reduces water supply.
+Climate change makes it worse.
+People need water for drinking.
+Farmers need water for crops.
+Without water, diseases spread.
+Water pollution reduces clean water.
+Saving water is important.
+Building wells helps communities.
+Water conservation protects the future.
+</p>
 
-function showProfile(){
-  document.getElementById("registerBox").style.display="none";
-  document.getElementById("loginBox").style.display="none";
-  document.getElementById("profile").style.display="block";
+<h2>🌱 Soil Degradation</h2>
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Soil_erosion.jpg" width="450">
+<p>
+Soil degradation makes soil poor.
+Over-farming removes nutrients.
+Chemicals damage land.
+Soil erosion removes topsoil.
+Crops grow poorly.
+Food production decreases.
+Farmers lose income.
+Planting trees protects soil.
+Better farming helps.
+Healthy soil is important for life.
+</p>
 
-  document.getElementById("profileName").innerText =
-    "Username: " + localStorage.getItem("user");
-
-  document.getElementById("profileEmail").innerText =
-    "Email: " + localStorage.getItem("email");
-
-  document.getElementById("avatarPreview").src =
-    localStorage.getItem("avatar");
-}
-
-function logout(){
-  localStorage.setItem("loggedIn","false");
-  location.reload();
-}
-
-window.onload = function(){
-  if(localStorage.getItem("loggedIn") === "true"){
-    showProfile();
-  }
-}
+<p>
+All environmental problems affect the whole world.
+People must work together to protect Earth.
+</p>
 </script>
 
 </body>
