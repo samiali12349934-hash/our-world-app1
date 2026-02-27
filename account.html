@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Account - Our World App</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<header>👤 Account Center</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="climate.html">Climate</a>
+  <a href="pollution.html">Pollution</a>
+  <a href="nature.html">Nature</a>
+  <a href="countries.html">Countries</a>
+  <a href="quiz.html">Quiz</a>
+</nav>
+
+<div class="section-box">
+<h2>User Profile</h2>
+<p>Username: <span id="username">Guest</span></p>
+<p>Avatar: <img id="avatar" src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" width="100"></p>
+<input type="text" id="newName" placeholder="Enter new username">
+<button onclick="changeName()">Save Name</button>
+</div>
+
+<script>
+function changeName(){
+  let name=document.getElementById("newName").value;
+  if(name){ document.getElementById("username").innerText=name; }
+}
+</script>
+
+</body>
+</html>
